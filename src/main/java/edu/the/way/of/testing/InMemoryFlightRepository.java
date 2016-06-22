@@ -19,4 +19,9 @@ public class InMemoryFlightRepository implements FlightRepository {
     public Flight load(String flightCode) {
         return flightRepo.get(flightCode);
     }
+
+    @Override
+    public int count() {
+        return flightRepo.size();
+    }
 }

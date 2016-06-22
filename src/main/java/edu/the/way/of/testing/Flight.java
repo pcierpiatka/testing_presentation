@@ -1,8 +1,11 @@
 package edu.the.way.of.testing;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by pawel on 6/22/16.
@@ -78,5 +81,9 @@ public class Flight {
 
     public void setFlightDate(Date flightDate) {
         this.flightDate = flightDate;
+    }
+
+    public int getAvailableSeatsLeft() {
+        return (int)seats.values().stream().filter( s -> s.isAvailable()).count();
     }
 }

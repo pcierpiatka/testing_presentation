@@ -35,4 +35,7 @@ public class FlightService {
         return flight;
     }
 
+    public int numberOfFlights() {
+        return flightRepository.count();
+    }
 }
