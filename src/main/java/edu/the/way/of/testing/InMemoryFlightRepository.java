@@ -1,6 +1,8 @@
 package edu.the.way.of.testing;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,5 +25,10 @@ public class InMemoryFlightRepository implements FlightRepository {
     @Override
     public int count() {
         return flightRepo.size();
+    }
+
+    @Override
+    public List<Flight> flights() {
+        return new ArrayList<>(flightRepo.values());
     }
 }

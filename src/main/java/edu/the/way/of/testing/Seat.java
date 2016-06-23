@@ -16,6 +16,10 @@ public class Seat {
         this.price = price;
     }
 
+    public boolean isInClass(SeatClass seatClass) {
+        return this.seatClass.equals(seatClass);
+    }
+
     public String getSeatNumber() {
         return seatNumber;
     }

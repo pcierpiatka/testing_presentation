@@ -15,6 +15,7 @@ public class Flight {
     private String origin;
     private String destination;
     private LocalDate flightDate;
+    private double cheapestSeatPrice;
 
     public Flight(String flightCode) {
         this.flightCode = flightCode;
@@ -29,12 +30,13 @@ public class Flight {
         return seats.size();
     }
 
-    public void bookSeat(String seatNumber) {
+    public Seat bookSeat(String seatNumber) {
         Seat seat = getSeat(seatNumber);
         if(!seat.isAvailable()) {
             throw new SeatAlreadyBookedException();
         }
         seat.book();
+        return seat;
     }
 
     public Seat getSeat(String seatNumber) {
@@ -95,5 +97,35 @@ public class Flight {
 
     public double getTheLowestPrice() {
         return 0.0;
+    }
+
+    public double getCheapestSeatPrice() {
+        return cheapestSeatPrice;
+    }
+
+    public double getAveragePriceOfAvailableSeats() {
+        double priceSum = 0;
+        int availableCount = 0;
+        for(Seat seat : seats.values()) {
+
+            if(seat.isAvailable()) {
+                priceSum += seat.getPrice();
+                availableCount++;
+            }
+        }
+        return priceSum / availableCount;
+    }
+
+
+    public double getAveragePriceOfSeatsInClass(SeatClass seatClass) {
+        double priceSum = 0;
+        int availableCount = 0;
+        for(Seat seat : seats.values()) {
+            if(seat.isInClass(seatClass)) {
+                priceSum += seat.getPrice();
+                availableCount++;
+            }
+        }
+        return priceSum / availableCount;
     }
 }

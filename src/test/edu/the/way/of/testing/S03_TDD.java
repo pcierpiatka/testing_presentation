@@ -13,7 +13,7 @@ public class S03_TDD {
     @Test
     public void should_fallow_red() {
         //arrange
-
+        Flight flight = new Flight("SomeFlight");
         //act
         Reservation reservation = new Reservation() {
             @Override
@@ -22,13 +22,13 @@ public class S03_TDD {
             }
         };
         //assert
-        Assert.assertTrue(reservation.book(null));
+        Assert.assertTrue(reservation.book(flight));
     }
 
     @Test
     public void should_fallow_green() {
         //given
-
+        Flight flight = new Flight("SomeFlight");
         //when
         Reservation reservation = new Reservation() {
             @Override
@@ -62,13 +62,13 @@ public class S03_TDD {
             }
         };
         //then
-        Assert.assertTrue(reservation.book(null));
+        Assert.assertTrue(reservation.book(flight));
     }
 
     @Test
     public void should_fallow_refactor() {
         //given
-
+        Flight flight = new Flight("SomeFlight");
         //when
         Reservation reservation = new Reservation() {
             @Override
@@ -81,7 +81,7 @@ public class S03_TDD {
             }
         };
         //then
-        Assert.assertTrue(reservation.book(null));
+        Assert.assertTrue(reservation.book(flight));
     }
 
 

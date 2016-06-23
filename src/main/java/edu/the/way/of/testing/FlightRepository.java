@@ -1,5 +1,7 @@
 package edu.the.way.of.testing;
 
+import java.util.List;
+
 /**
  * Created by pawel on 6/22/16.
  */
@@ -10,4 +12,6 @@ public interface FlightRepository {
     Flight load(String flightCode);
 
     int count();
+
+    List<Flight> flights();
 }
