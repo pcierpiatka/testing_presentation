@@ -30,7 +30,7 @@ public class FlightService {
     public Flight getFlight(String flightCode) {
         Flight flight = flightRepository.load(flightCode);
         if(flight == null) {
-            throw new IllegalStateException("Unknow fligh ");
+            throw new IllegalStateException("Unknown fligh ");
         }
         return flight;
     }

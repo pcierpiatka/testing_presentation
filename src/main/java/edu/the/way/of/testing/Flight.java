@@ -1,11 +1,9 @@
 package edu.the.way.of.testing;
 
-import java.util.Collections;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 /**
  * Created by pawel on 6/22/16.
@@ -16,7 +14,7 @@ public class Flight {
     private Map<String, Seat> seats = new HashMap<>();
     private String origin;
     private String destination;
-    private Date flightDate;
+    private LocalDate flightDate;
 
     public Flight(String flightCode) {
         this.flightCode = flightCode;
@@ -34,7 +32,7 @@ public class Flight {
     public void bookSeat(String seatNumber) {
         Seat seat = getSeat(seatNumber);
         if(!seat.isAvailable()) {
-            throw new IllegalStateException("Seat is not avaiable");
+            throw new SeatAlreadyBookedException();
         }
         seat.book();
     }
@@ -42,9 +40,17 @@ public class Flight {
     public Seat getSeat(String seatNumber) {
         Seat seat = seats.get(seatNumber);
         if(seat == null) {
-            throw new IllegalStateException("There is no such seat available");
+            throw new UnknownSeatException();
         }
         return seat;
+    }
+
+    public boolean isFrom(String origin) {
+        return this.origin.equalsIgnoreCase(origin);
+    }
+
+    public boolean isTo(String destination) {
+        return this.destination.equalsIgnoreCase(destination);
     }
 
     public String getFlightCode() {
@@ -63,7 +69,7 @@ public class Flight {
         return destination;
     }
 
-    public Date getFlightDate() {
+    public LocalDate getFlightDate() {
         return flightDate;
     }
 
@@ -79,11 +85,15 @@ public class Flight {
         this.destination = destination;
     }
 
-    public void setFlightDate(Date flightDate) {
+    public void setFlightDate(LocalDate flightDate) {
         this.flightDate = flightDate;
     }
 
     public int getAvailableSeatsLeft() {
         return (int)seats.values().stream().filter( s -> s.isAvailable()).count();
+    }
+
+    public double getTheLowestPrice() {
+        return 0.0;
     }
 }

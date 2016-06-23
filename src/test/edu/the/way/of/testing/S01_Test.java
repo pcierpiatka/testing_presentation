@@ -11,27 +11,27 @@ import java.util.Map;
  */
 public class S01_Test {
 
-    //this is some kind of test
     @Test
-    public void testBehavior() {
+    public void weTestIfSomethingWorks() {
 
     }
 
+
     @Test
     public void testNotLibrary() {
-
-        FlightService flightService = new FlightService(new InMemoryFlightRepository());
+        Flight flight = new Flight("ABC001");
+        flight.setSeats(new HashMap<>());
 
         for(int i=0; i < 10 ; i++) {
-            flightService.addFlight(new Flight("SomeCode"+i));
+            flight.addSeat(SeatClass.ECONOMIC,"Seat"+ i, 120 + i);
         }
 
-        Assert.assertEquals(flightService.numberOfFlights(), 10);
+        //we dont need to iterate 10 times to know that addSeat works
+        Assert.assertEquals(flight.getSeatsCount(), 10);
     }
 
     @Test
     public void testFallowSRPRule() {
-
         Flight flight = new Flight("SomeFlight");
         flight.setOrigin("Warsaw");
         flight.setDestination("Some other place");
@@ -41,15 +41,16 @@ public class S01_Test {
 
         flight.setSeats(seats);
 
+        //test should exam one thing
         Assert.assertEquals(flight.getAvailableSeatsLeft(), 1);
-
 
     }
 
     @Test
     public void testShouldBeClear() {
+        //prepare SUT
         Flight flight = new Flight("SomeFlight");
-
+        //assert things you actually want it
         Assert.assertEquals(flight.getFlightCode(),"SomeFlight");
     }
 

@@ -3,7 +3,7 @@ package edu.the.way.of.testing;
 /**
  * Created by pawel on 6/18/16.
  */
-public class S06_Assertions {
+public class S04_Assertions {
 
     public void should_using_assertion() {
 

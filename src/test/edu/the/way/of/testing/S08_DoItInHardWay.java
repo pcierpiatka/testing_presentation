@@ -3,7 +3,7 @@ package edu.the.way.of.testing;
 /**
  * Created by pawel on 6/22/16.
  */
-public class S09_DoItInHardWay {
+public class S08_DoItInHardWay {
 
     public void should_static_be_your_religion() {
 
