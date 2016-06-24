@@ -12,25 +12,6 @@ import java.util.Map;
 public class S01_Test {
 
     @Test
-    public void weTestIfSomethingWorks() {
-
-    }
-
-
-    @Test
-    public void testNotLibrary() {
-        Flight flight = new Flight("ABC001");
-        flight.setSeats(new HashMap<>());
-
-        for(int i=0; i < 10 ; i++) {
-            flight.addSeat(SeatClass.ECONOMIC,"Seat"+ i, 120 + i);
-        }
-
-        //we dont need to iterate 10 times to know that addSeat works
-        Assert.assertEquals(flight.getSeatsCount(), 10);
-    }
-
-    @Test
     public void testFallowSRPRule() {
         Flight flight = new Flight("SomeFlight");
         flight.setOrigin("Warsaw");
@@ -50,6 +31,10 @@ public class S01_Test {
     public void testShouldBeClear() {
         //prepare SUT
         Flight flight = new Flight("SomeFlight");
+        flight.setOrigin("Warszawa");
+        flight.bookSeat("023");
+        flight.setSeats(new HashMap<>());
+
         //assert things you actually want it
         Assert.assertEquals(flight.getFlightCode(),"SomeFlight");
     }
@@ -69,7 +54,7 @@ public class S01_Test {
         Assert.assertFalse(flight.getSeat("0001").isAvailable());
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = SeatAlreadyBookedException.class)
     public void testVerifyFailingPath() {
         Flight flight = new Flight("SomeFlight");
         flight.setOrigin("Warsaw");

@@ -47,6 +47,11 @@ public class FlightTestBuilder {
         return this;
     }
 
+    public FlightTestBuilder withSeatInPrice(String seatNumber, double price) {
+        flight.addSeat(SeatClass.ECONOMIC, seatNumber, price);
+        return this;
+    }
+
     public FlightTestBuilder withSeat(String seatNumber) {
         flight.addSeat(SeatClass.ECONOMIC, seatNumber, 0);
         return this;

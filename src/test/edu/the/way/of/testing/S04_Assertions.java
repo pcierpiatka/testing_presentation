@@ -1,4 +1,4 @@
-package edu.the.way.of.testing;
+ package edu.the.way.of.testing;
 
 import edu.the.way.of.testing.utils.SeatAssert;
 import org.assertj.core.api.Assertions;
