@@ -19,7 +19,7 @@ public class S08_DoItInHardWay {
 
     }
 
-    public void should_validate_low_of_demeter() {
+    public void should_validate_law_of_demeter() {
         new SomeClass().doMagic();
     }
 
