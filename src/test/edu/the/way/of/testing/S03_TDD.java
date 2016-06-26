@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class S03_TDD {
 
     @Test
-    public void should_fallow_red() {
+    public void should_start_from_red() {
         //arrange
         Flight flight = new Flight("SomeFlight");
         //act
