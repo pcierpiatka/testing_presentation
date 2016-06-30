@@ -1,4 +1,4 @@
-package edu.the.way.of.testing.utils;
+package edu.the.way.of.testing.infrastructure;
 
 import edu.the.way.of.testing.Seat;
 import edu.the.way.of.testing.SeatClass;
@@ -10,22 +10,24 @@ import org.assertj.core.api.Assertions;
  */
 public class SeatAssert extends AbstractAssert<SeatAssert,Seat> {
 
-    protected SeatAssert(Seat actual) {
+    private FlightAssert parent;
+
+    protected SeatAssert(Seat actual, FlightAssert parent) {
         super(actual, SeatAssert.class);
     }
 
     public static SeatAssert assertThat(Seat actual){
-        return new SeatAssert(actual);
+        return new SeatAssert(actual, null);
     }
 
     public SeatAssert seatNumberIsEqualTo(String expected) {
         Assertions.assertThat(actual.getSeatNumber()).isEqualTo(expected);
-        return this;
+        return myself;
     }
 
     public SeatAssert seatClassIsEqualTo(SeatClass expected) {
         Assertions.assertThat(actual.getSeatClass()).isEqualTo(expected);
-        return this;
+        return myself;
     }
 
     public SeatAssert isEconomic(){
@@ -34,12 +36,24 @@ public class SeatAssert extends AbstractAssert<SeatAssert,Seat> {
 
     public SeatAssert priceIsEqualTo(double expected) {
         Assertions.assertThat(actual.getPrice()).isEqualTo(expected);
-        return this;
+        return myself;
     }
 
     public SeatAssert isBooked() {
         Assertions.assertThat(actual.isBooked()).isTrue();
-        return this;
+        return myself;
     }
 
+    public FlightAssert backToFlight() {
+        validate();
+        return parent;
+    }
+
+    private void validate() {
+        Assertions.assertThat(parent).overridingErrorMessage("Can not back to FlightAssert because FlightAssert is null.\n");
+    }
+
+    public static SeatAssert assertThat(Seat seat, FlightAssert parent) {
+        return new SeatAssert(seat, parent);
+    }
 }

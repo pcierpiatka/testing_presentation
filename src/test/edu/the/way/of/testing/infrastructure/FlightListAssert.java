@@ -1,7 +1,6 @@
-package edu.the.way.of.testing.utils;
+package edu.the.way.of.testing.infrastructure;
 
 import edu.the.way.of.testing.Flight;
-import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.IterableAssert;
 

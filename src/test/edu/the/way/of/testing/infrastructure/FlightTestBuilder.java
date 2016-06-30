@@ -1,4 +1,4 @@
-package edu.the.way.of.testing.utils;
+package edu.the.way.of.testing.infrastructure;
 
 import edu.the.way.of.testing.Flight;
 import edu.the.way.of.testing.SeatClass;

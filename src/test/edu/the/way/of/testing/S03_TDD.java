@@ -10,8 +10,12 @@ import java.time.LocalDate;
  */
 public class S03_TDD {
 
+    interface Reservation {
+        boolean book(Flight flight);
+    }
+
     @Test
-    public void should_start_from_red() {
+    public void start_from_red() {
         //arrange
         Flight flight = new Flight("SomeFlight");
         //act
@@ -26,7 +30,52 @@ public class S03_TDD {
     }
 
     @Test
-    public void should_fallow_green() {
+    public void make_it_green() {
+        //given
+        Flight flight = new Flight("SomeFlight");
+        //when
+        Reservation reservation = new Reservation() {
+            @Override
+            public boolean book(Flight flight) {
+                return true;
+            }
+        };
+        //then
+        Assert.assertTrue(reservation.book(flight));
+    }
+
+    @Test       //hammer time
+    public void mc_refactor_time() {
+        //given
+        Flight flight = new Flight("SomeFlight");
+        //when
+        Reservation reservation = new Reservation() {
+            @Override
+            public boolean book(Flight flight) {
+                return true;
+            }
+        };
+        //then
+        Assert.assertTrue(reservation.book(flight));
+    }
+
+    @Test
+    public void start_from_red_solution() {
+        //arrange
+        Flight flight = new Flight("SomeFlight");
+        //act
+        Reservation reservation = new Reservation() {
+            @Override
+            public boolean book(Flight flight) {
+                return false;
+            }
+        };
+        //assert
+        Assert.assertTrue(reservation.book(flight));
+    }
+
+    @Test
+    public void make_it_green_solution() {
         //given
         Flight flight = new Flight("SomeFlight");
         //when
@@ -65,8 +114,8 @@ public class S03_TDD {
         Assert.assertTrue(reservation.book(flight));
     }
 
-    @Test
-    public void should_fallow_refactor() {
+    @Test       //hammer time
+    public void mc_refactor_time_solution() {
         //given
         Flight flight = new Flight("SomeFlight");
         //when
@@ -83,11 +132,4 @@ public class S03_TDD {
         //then
         Assert.assertTrue(reservation.book(flight));
     }
-
-
-    interface Reservation {
-
-        boolean book(Flight flight);
-    }
-
 }

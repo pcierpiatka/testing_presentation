@@ -18,7 +18,7 @@ public class S07_Myths {
         //i will never need to change them
     }
 
-    public void fallow_rule_fire_and_forget() {
+    public void follow_rule_fire_and_forget() {
         // i write one time and then @Ignore
     }
 }

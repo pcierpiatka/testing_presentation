@@ -1,6 +1,6 @@
 package edu.the.way.of.testing;
 
-import edu.the.way.of.testing.utils.FlightTestBuilder;
+import edu.the.way.of.testing.infrastructure.FlightTestBuilder;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class S05_Builder {
     }
 
     @Test
-    public void should_return_price_of_a_cheapest_seat_in_given_flight() {
+    public void should_return_price_of_the_cheapest_seat_in_given_flight() {
         // given
         double cheapestSeatPrice = 10;
         Flight flight = new Flight("L101");
@@ -40,7 +40,7 @@ public class S05_Builder {
 
 
     @Test
-    public void should_return_price_of_a_cheapest_seat_in_given_flight_builder() {
+    public void should_return_price_of_the_cheapest_seat_in_given_flight_builder() {
         // given
         double cheapestSeatPrice = 10;
 

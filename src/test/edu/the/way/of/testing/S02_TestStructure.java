@@ -11,7 +11,8 @@ public class S02_TestStructure {
     @Test
     public void testJUnitWay(){
         //arrange
-        /** creation of all object that are NECESSARY for test execution - as well preparing SUT for text execution */
+        /** creation of all objects that are NECESSARY for test execution
+         *  - as well as preparing SUT for text execution */
         Flight flight = new Flight("ABC");
         flight.addSeat(SeatClass.ECONOMIC, "001", 120.00);
         //act

@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public class S01_Test {
 
+    // SRP = Single Responsibility Principal
     @Test
     public void testFallowSRPRule() {
         Flight flight = new Flight("SomeFlight");
@@ -24,16 +25,15 @@ public class S01_Test {
 
         //test should exam one thing
         Assert.assertEquals(flight.getAvailableSeatsLeft(), 1);
-
     }
 
     @Test
-    public void testShouldBeClear() {
-        //prepare SUT
+    public void testShouldBePrecise() {
+        //prepare SUT (System under test)
         Flight flight = new Flight("SomeFlight");
-        flight.setOrigin("Warszawa");
-        flight.bookSeat("023");
-        flight.setSeats(new HashMap<>());
+//        flight.setOrigin("Warszawa");
+//        flight.bookSeat("023");
+//        flight.setSeats(new HashMap<>());
 
         //assert things you actually want it
         Assert.assertEquals(flight.getFlightCode(),"SomeFlight");
