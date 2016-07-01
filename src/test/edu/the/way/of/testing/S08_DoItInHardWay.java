@@ -16,7 +16,7 @@ public class S08_DoItInHardWay {
     }
 
     public void should_class_have_many_dependencies() {
-
+        new Madness(new Object(), new Object(), new Object(), new Object(), new Object(), new Object());
     }
 
     public void should_validate_law_of_demeter() {
@@ -79,6 +79,12 @@ public class S08_DoItInHardWay {
 
         public String getCity() {
             return city;
+        }
+    }
+
+    private class Madness {
+        public Madness(Object...dependencies) {
+
         }
     }
 
